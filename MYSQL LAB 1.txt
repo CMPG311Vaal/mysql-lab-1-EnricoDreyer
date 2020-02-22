@@ -1,0 +1,391 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.19 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.04 sec)
+
+mysql> create database BidvestBank;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use BidvestBank;
+Database changed
+mysql> Create table BankBranch(
+    -> branch-name varchar(10) not null primary key,
+    -> branch-city varchar(10) not null,
+    -> assets varchar(45) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-name varchar(10) not null primary key,
+branch-city varchar(10) not null,
+assets' at line 2
+mysql> Create table BankBranch(
+    -> branch_name varchar(10) not null primary key,
+    -> branch_city vatchar(10) not null,
+    -> assets int not null);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'vatchar(10) not null,
+assets int not null)' at line 3
+mysql> Create table BankBranch(
+    -> branch_name varchar(10) not null primary key,
+    -> branch_city varchar(10) not null,
+    -> assets int not null);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> Create table Customer(
+    -> customer_name varchar(10) not null primary key,
+    -> customer_street varchar not null,
+    -> customer;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null,
+customer' at line 3
+mysql> Create table Customer(
+    -> customer_name varchar(10) not null primary key,
+    -> customer_street varchar(10) not null,
+    -> customer_city varchar(10) not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> Create table CustomerAccount(
+    -> account_number varchar(10) not null primary key,
+    -> branch_name varchar(10) not null,
+    -> balance int not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> Create table Loan(
+    -> loan_number varchar(10) not null primary key,
+    -> branch_name varchar(10) not null,
+    -> amount int not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> Create table Depositor(
+    -> customer_name varchar(10) not null,
+    -> account_number varchar(10) not null primary key);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> Create table Borrower(
+    -> customer_name varchar(10) not null,
+    -> loan_number varchar(10) not null primary key);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> Create table Employee(
+    -> employee_name varchar(10) not null primary key,
+    -> branch_name varchar(10) not null,
+    -> salary int not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into CustomerAccount values('A-5324', 'Newton', 500);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into CustomerAccount values('A-5624', 'Sunnyside', 400);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-7794', 'midrand', 900);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into CustomerAccount values('A-4467', 'Mabopane', 700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-3546', 'Midrand', 750);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-3453', 'Universitas', 700);
+ERROR 1406 (22001): Data too long for column 'branch_name' at row 1
+mysql> insert into CustomerAccount values('A-3453', 'Universit', 700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into CustomerAccount values('A-2542', 'Mamelodi', 350);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Midrand', 'Johanburg', 7100000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Newton', 'Johanburg', 9000000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Mabopane', 'Pretoria', 400000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Belgravia', 'Kimberly', 3700000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Sunnyside', 'Pretoria', 1700000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into BankBranch values('Amanzinto', 'Durban', 300000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Universit', 'Bloemfon', 2100000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into BankBranch values('Mamelodi', 'Pretoria', 8000000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Modise', 'Spring', 'George');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Brooks', 'Senator', 'Johanburg');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Jooste', 'North', 'Kimberly');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Lombard', 'Sand Hill', 'Nelspruit');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Mokwena', 'Walnut', 'Port-Eliza');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Johnson', 'Mmabatho', 'Mafikeng');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Johnsonn', 'Alma', 'Bloemfont');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Zwane', 'Main', 'Mafikeng');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Lindsay', 'Park', 'George');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Smith', 'North', 'Kimberly');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Dlamini', 'Putnam', 'Port-Eliza');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into customer values('Williams', 'Nassau', 'Giyane');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into depositor values('Johnson','A-5624');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into depositor values('Johnson','A-5624');
+ERROR 1062 (23000): Duplicate entry 'A-5624' for key 'depositor.PRIMARY'
+mysql> insert into depositor values('Johnson','A-7794');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into depositor values('Zwane','A-3546');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into depositor values('Lindsay','A-3453');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into depositor values('Smith','A-4467');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into depositor values('Dlamini','A-2542');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-11', 'Mamelodi', 900)
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-14', 'Newton', 1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-15', 'Sunnyside', 1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-16', 'Sunnyside', 1300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-17', 'Newton', 1000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-23', 'Universit', 2000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into loan values('L-93', 'Mabopane', 500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Modise', 'L-16');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Jooste', 'L-93');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Johnson', 'L-15');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Jackson', 'L-14');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Zwane', 'L-17');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Smith', 'L-11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Smith', 'L-23');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into borrower values('Williams', 'L-17');
+ERROR 1062 (23000): Duplicate entry 'L-17' for key 'borrower.PRIMARY'
+mysql> insert into employee values('Modise','Sunnyside', 1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Brown','Sunnyside', 1300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Gopal','Sunnyside', 5300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Johnson','Newton', 1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Loreena','Newton', 1300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Peterson','Newton', 2500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Rao','Austin', 1500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values('Sato','Austin', 1600);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from customer where balance > 700;
+ERROR 1054 (42S22): Unknown column 'balance' in 'where clause'
+mysql> select * from customeraccount where balance > 700;
++----------------+-------------+---------+
+| account_number | branch_name | balance |
++----------------+-------------+---------+
+| A-3546         | Midrand     |     750 |
+| A-7794         | midrand     |     900 |
++----------------+-------------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from customeraccount where balance < 700;
++----------------+-------------+---------+
+| account_number | branch_name | balance |
++----------------+-------------+---------+
+| A-2542         | Mamelodi    |     350 |
+| A-5324         | Newton      |     500 |
+| A-5624         | Sunnyside   |     400 |
++----------------+-------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select customer_name from customer where customer_city = 'Johanburg';
++---------------+
+| customer_name |
++---------------+
+| Brooks        |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where salary > 1500 and branch_name != 'Newton';
++---------------+-------------+--------+
+| employee_name | branch_name | salary |
++---------------+-------------+--------+
+| Gopal         | Sunnyside   |   5300 |
+| Sato          | Austin      |   1600 |
++---------------+-------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> Select count(salary) from employee;
++---------------+
+| count(salary) |
++---------------+
+|             8 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> Select avg(salary) from employee;
++-------------+
+| avg(salary) |
++-------------+
+|   2062.5000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(assets) from BankBranch;
++-------------+
+| max(assets) |
++-------------+
+|     9000000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select * from BankBranch where max(assets);
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select * from BankBranch where assets = 9000000;
++-------------+-------------+---------+
+| branch_name | branch_city | assets  |
++-------------+-------------+---------+
+| Newton      | Johanburg   | 9000000 |
++-------------+-------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select employee_name where branch_name = 'Sunnyside';
+ERROR 1054 (42S22): Unknown column 'employee_name' in 'field list'
+mysql> select employee_name from employee where branch_name = 'Sunnyside';
++---------------+
+| employee_name |
++---------------+
+| Brown         |
+| Gopal         |
+| Modise        |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from borrower;
++---------------+-------------+
+| customer_name | loan_number |
++---------------+-------------+
+| Smith         | L-11        |
+| Jackson       | L-14        |
+| Johnson       | L-15        |
+| Modise        | L-16        |
+| Zwane         | L-17        |
+| Smith         | L-23        |
+| Jooste        | L-93        |
++---------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> Select account_number from customeraccount where balance > 900;
+Empty set (0.00 sec)
+
+mysql> Select avg(salary) AS (avg_salary) from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(avg_salary) from employee' at line 1
+mysql> Select avg(salary) AS 'avg_salary' from employee;
++------------+
+| avg_salary |
++------------+
+|  2062.5000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select account_number, balance from customeraccount where branch_name = 'Newton' and balance > 600;
+Empty set (0.00 sec)
+
+mysql> select branch_name, assets from bankbranch;
++-------------+---------+
+| branch_name | assets  |
++-------------+---------+
+| Amanzinto   |  300000 |
+| Belgravia   | 3700000 |
+| Mabopane    |  400000 |
+| Mamelodi    | 8000000 |
+| Midrand     | 7100000 |
+| Newton      | 9000000 |
+| Sunnyside   | 1700000 |
+| Universit   | 2100000 |
++-------------+---------+
+8 rows in set (0.00 sec)
+
+mysql>
